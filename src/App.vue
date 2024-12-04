@@ -14,15 +14,8 @@ const downloadInfo = async () => {
   const zip = new JSZip();
   for (let i = 0; i < descImageList.length; i++) {
     const el = descImageList[i];
-    const url: string | undefined = el.dataset.src
+    const url: string = el.dataset.src || el.src;
     
-    if (url === 'https://g.alicdn.com/s.gif') debugger
-
-    if (isUndefined(url)) {
-      console.error('图片地址获取失败', el)
-      continue
-    }
-
     const resp = await fetch(url);
 
     if (!resp.ok) {
@@ -43,7 +36,6 @@ const downloadInfo = async () => {
 
   zip.generateAsync({ type: 'blob' }).then((content) => {
     const title = titleElement?.title || Date.now().toString()
-    debugger
     saveAs(content, title + '.zip')
   })
 
