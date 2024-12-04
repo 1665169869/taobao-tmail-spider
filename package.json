@@ -11,6 +11,7 @@
   "dependencies": {
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
+    "jszip-sync": "3.2.1-sync",
     "lodash-es": "^4.17.21",
     "vue": "^3.4.27"
   },
@@ -21,9 +22,9 @@
     "postcss": "^8.4.49",
     "postcss-preset-env": "^10.1.1",
     "sass": "^1.81.1",
-    "typescript": "^5.4.5",
+    "typescript": "5.6.2",
     "vite": "^5.2.12",
     "vite-plugin-monkey": "^4.0.0",
-    "vue-tsc": "^2.0.19"
+    "vue-tsc": "2.0.29"
   }
 }

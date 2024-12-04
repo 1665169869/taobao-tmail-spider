@@ -1,7 +1,16 @@
+<!--
+ * @Author: 白羽 1665169869@qq.com
+ * @Date: 2024-12-04 14:28:41
+ * @LastEditors: 白羽 1665169869@qq.com
+ * @LastEditTime: 2024-12-04 15:35:42
+ * @FilePath: \taobao-tmail-spider\src\App.vue
+ * @Description: 
+ * Copyright (c) 2024 by 白羽 1665169869@qq.com, All Rights Reserved. 
+-->
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { isUndefined } from 'lodash-es';
-import JSZip from 'jszip';
+import JSZip from 'jszip-sync';
 import { saveAs } from 'file-saver'
 
 const downloadInfo = async () => {
@@ -34,11 +43,9 @@ const downloadInfo = async () => {
     }
   }
 
-  zip.generateAsync({ type: 'blob' }).then((content) => {
-    const title = titleElement?.title || Date.now().toString()
-    saveAs(content, title + '.zip')
-  })
-
+  const title = titleElement?.title || Date.now().toString()
+  const content = await zip.generateAsync({ type: 'blob' })
+  saveAs(content, `${title}.zip`)
 }
 
 
